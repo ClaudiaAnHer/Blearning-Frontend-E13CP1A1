@@ -11,18 +11,83 @@ para que modifiquen el input agregando su valor.
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style type="text/css">
+    .btn, .result{
+      float:left;
+      font-size: 20px;
+      width:50px;
+      height: 50px;
+      margin:10px 16px;
+      box-sizing: border-box;
+    }
+    .num{
+      width: 250px;
+      margin: 0 auto;
+      height: 300px;
+      text-align: center;
+    }
+    .calculadora{
+      width: 245px;
+      border: solid silver 1px;
+      margin: 0 auto;
+      height: 355px;
+    }
+    input{
+      margin: 6%;
+      width: 86%;
+      font-size: 30px;
+    }
+   </style>
   </head>
   <body>
-    <input type="text" name="calculator" value="">
+<div class="calculadora">
+<input type="text" name="calculator" value="">
+  <div class="num">
     <button class="btn" type="button" name="button">1</button>
+    <button class="btn" type="button" name="button">2</button>
+    <button class="btn" type="button" name="button">3</button>
+    <button class="btn" type="button" name="button">4</button>
+    <button class="btn" type="button" name="button">5</button>
+    <button class="btn" type="button" name="button">6</button>
+    <button class="btn" type="button" name="button">7</button>
+    <button class="btn" type="button" name="button">8</button>
+    <button class="btn" type="button" name="button">9</button>
+    <button class="btn" type="button" name="button">0</button>
     <button class="btn" type="button" name="button">+</button>
     <button class="result" type="button" name="result">=</button>
+    </div>
+</div>
     <script type="text/javascript">
+
+    /*
       var result = document.getElementsByName("result")[0];
       var calculator = document.getElementsByName("calculator")[0];
       result.onclick = function(){
         calculator.value = eval(calculator.value)
       }
+    */
+
+     var result = document.getElementsByName("result")[0];
+      var calculator = document.getElementsByName("calculator")[0];
+      function botones(x) {
+        var boton=document.getElementsByName("button")[x];
+        var texto= boton.innerText;
+        boton.onclick = function(){
+              calculator.value+= texto;
+            }
+        if(texto==""){
+          boton.onclick = function(){
+              calculator.value= " ";
+            }
+        }
+      }
+      for (var i=0; i<11; i++) {
+        botones(i);
+      }
+      result.onclick = function(){
+      calculator.value = eval(calculator.value)
+    }
+
     </script>
   </body>
 </html>
